@@ -4,24 +4,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EncryptionVisualization</title>
+    <title>Encryption Visualization</title>
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
-    <!-- Add your JavaScript links here, if any -->
 </head>
 <body>
     <main>
         <section class="hero">
-            <h1>Welcome To My EncryptionVisualization Project</h1>
+            <h1>Welcome To My Encryption Visualization Project</h1>
             <p>Your project description goes here.</p>
-            
-            <!-- Add an input field -->
-            <form>
+            <form id="myForm">
                 <label for="inputField">Enter something:</label>
-                <input type="text" id="inputField" name="inputField">
-                <button type="submit">Submit</button>
-            </form>
+                <input type="text" id="inputField" name="inputField" class="input-field">
+                <label for="shiftValue">Shift Value:</label>
+                <input type="number" id="shiftValue" name="shiftValue" class="input-field" value="1">
+                <button type="submit" class="submit-button">Submit</button>
+            </form>            
         </section>
-        <!-- Add more sections and content as needed -->
+        
+        <!-- Add a container to display the encoded text -->
+        <div id="encodedTextContainer">
+            <div id="encodedText">Encoded Text: [Display Encoded Text Here]</div>
+        </div>
+        
     </main>
+
+    <script>
+        // Caesar cipher function
+        function caesarCipher(text, shift) {
+            return text.split('').map(char => {
+                    if (char.match(/[a-z]/i)) {
+                        const code = char.charCodeAt(0);
+                        const offset = code < 91 ? 65 : 97;
+                        const shiftedCode = ((code - offset + shift) % 26 + 26) % 26 + offset;
+                        return String.fromCharCode(shiftedCode);
+                    }
+                    return char;
+                })
+                .join('');
+        }
+
+                // Initialize the shift value
+        let currentShiftValue = 1; // Default shift value
+
+        // Function to handle form submission
+        function handleFormSubmission(event) {
+            event.preventDefault();  // Prevent the default form submission behavior
+
+            // Handle the form data
+            const inputField = document.getElementById('inputField');
+            const userInput = inputField.value;
+
+            // Read the user-specified shift value
+            const shiftInput = document.getElementById('shiftValue');
+            currentShiftValue = parseInt(shiftInput.value) || currentShiftValue;
+
+            // Encode the user's input with the specified shift value
+            const encodedText = caesarCipher(userInput, currentShiftValue);
+
+            // Display the encoded text
+            const encodedTextContainer = document.getElementById('encodedText');
+            encodedTextContainer.textContent = 'Encoded Text: ' + encodedText;
+
+            // Clear the input field
+            inputField.value = '';
+        }
+
+        // Set up the form submission handler
+        document.getElementById('myForm').addEventListener('submit', handleFormSubmission);
+
+        // Handle initial shift value when the page loads
+        const shiftInput = document.getElementById('shiftValue');
+        shiftInput.value = currentShiftValue;
+
+    </script>
 </body>
 </html>

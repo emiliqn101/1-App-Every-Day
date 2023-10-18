@@ -5,11 +5,50 @@ body {
     height: 100vh;
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
+    background-color: black;
 }
 
 .hero {
     text-align: center;
-    padding-bottom: 800px; 
+    padding-bottom: 800px;
     font-family: Arial, Helvetica, sans-serif;
+    color: white;
 }
 
+.input-field {
+    padding: 3px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.submit-button {
+    padding: 5px 15px;
+    background-color: #1eb300;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.submit-button:hover {
+    background-color: #157901;
+}
+
+#encodedTextContainer {
+    text-align: center;
+    background-color: #dfdfdf; 
+    padding: 20px;
+    border-radius: 10px;
+    position: absolute; 
+    top: 90%; 
+    left: 50%; 
+    transform: translateX(-50%); 
+}
+
+#encodedText {
+    color: rgb(0, 0, 0);
+}
