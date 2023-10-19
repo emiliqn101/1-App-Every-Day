@@ -20,33 +20,35 @@
                 <button type="submit" class="submit-button">Submit</button>
             </form>            
         </section>
-        <div class="wrapper">
-            <div class="item" id="letterA">A</div>
-            <div class="item" id="letterB">B</div>
-            <div class="item" id="letterC">C</div>
-            <div class="item" id="letterD">D</div>
-            <div class="item" id="letterE">E</div>
-            <div class="item" id="letterF">F</div>
-            <div class="item" id="letterG">G</div>
-            <div class="item" id="letterH">H</div>
-            <div class="item" id="letterI">I</div>
-            <div class="item" id="letterJ">J</div>
-            <div class="item" id="letterK">K</div>
-            <div class="item" id="letterL">L</div>
-            <div class="item" id="letterM">M</div>
-            <div class="item" id="letterN">N</div>
-            <div class="item" id="letterO">O</div>
-            <div class="item" id="letterP">P</div>
-            <div class="item" id="letterQ">Q</div>
-            <div class="item" id="letterR">R</div>
-            <div class="item" id="letterS">S</div>
-            <div class="item" id="letterT">T</div>
-            <div class="item" id="letterU">U</div>
-            <div class="item" id="letterV">V</div>
-            <div class="item" id="letterW">W</div>
-            <div class="item" id="letterX">X</div>
-            <div class="item" id="letterY">Y</div>
-            <div class="item" id="letterZ">Z</div>
+        <div class="scroller">
+            <ul class="tag-list scroller_inner">
+                <li class="item" id="letterA">A</li>
+                <li class="item" id="letterB">B</li>
+                <li class="item" id="letterC">C</li>
+                <li class="item" id="letterD">D</li>
+                <li class="item" id="letterE">E</li>
+                <li class="item" id="letterF">F</li>
+                <li class="item" id="letterG">G</li>
+                <li class="item" id="letterH">H</li>
+                <li class="item" id="letterI">I</li>
+                <li class="item" id="letterJ">J</li>
+                <li class="item" id="letterK">K</li>
+                <li class="item" id="letterL">L</li>
+                <li class="item" id="letterM">M</li>
+                <li class="item" id="letterN">N</li>
+                <li class="item" id="letterO">O</li>
+                <li class="item" id="letterP">P</li>
+                <li class="item" id="letterQ">Q</li>
+                <li class="item" id="letterR">R</li>
+                <li class="item" id="letterS">S</li>
+                <li class="item" id="letterT">T</li>
+                <li class="item" id="letterU">U</li>
+                <li class="item" id="letterV">V</li>
+                <li class="item" id="letterW">W</li>
+                <li class="item" id="letterX">X</li>
+                <li class="item" id="letterY">Y</li>
+                <li class="item" id="letterZ">Z</li>
+            </ul>
         </div>
         
         <!-- Add a container to display the encoded text -->
@@ -89,13 +91,16 @@
             // Encode the user's input with the specified shift value
             const encodedText = caesarCipher(userInput, currentShiftValue);
 
-
-            
-            // Get the first letter and convert to uppercase
-            for (const char of encodedText){
-                scrollToElement(char);
-                
+            const scrollers = document.querySelectorAll(".scroller");
+ 
+            addAnimation();
+            function addAnimation(){
+                scrollers.forEach(scroller => {
+                    scroller.setAttribute('data-animated', true);
+                });
             }
+            
+            
 
 
 
@@ -111,11 +116,6 @@
             // Clear the input field
             inputField.value = '';
         }
-        function scrollToElement(letter) {
-            const Element = document.getElementById('letter'+letter.toUpperCase());
-            Element.scrollIntoView({ behavior: 'smooth' });
-        }
-        
 
         // Set up the form submission handler
         document.getElementById('myForm').addEventListener('submit', handleFormSubmission);
