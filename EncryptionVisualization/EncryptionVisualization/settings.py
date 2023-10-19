@@ -115,9 +115,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
-
 STATICFILES_DIRS = [
-    "C:/Users/Emiliqn/Desktop/1-App-Every-Day/EncryptionVisualization/Visualization/static",
+    BASE_DIR / "C:/Users/Emiliqn/Desktop/1-App-Every-Day/EncryptionVisualization/Visualization/static",
 ]
 
 STATIC_URL = 'static/'

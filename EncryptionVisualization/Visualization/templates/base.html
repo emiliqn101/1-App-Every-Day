@@ -20,6 +20,34 @@
                 <button type="submit" class="submit-button">Submit</button>
             </form>            
         </section>
+        <div class="wrapper">
+            <div class="item" id="letterA">A</div>
+            <div class="item" id="letterB">B</div>
+            <div class="item" id="letterC">C</div>
+            <div class="item" id="letterD">D</div>
+            <div class="item" id="letterE">E</div>
+            <div class="item" id="letterF">F</div>
+            <div class="item" id="letterG">G</div>
+            <div class="item" id="letterH">H</div>
+            <div class="item" id="letterI">I</div>
+            <div class="item" id="letterJ">J</div>
+            <div class="item" id="letterK">K</div>
+            <div class="item" id="letterL">L</div>
+            <div class="item" id="letterM">M</div>
+            <div class="item" id="letterN">N</div>
+            <div class="item" id="letterO">O</div>
+            <div class="item" id="letterP">P</div>
+            <div class="item" id="letterQ">Q</div>
+            <div class="item" id="letterR">R</div>
+            <div class="item" id="letterS">S</div>
+            <div class="item" id="letterT">T</div>
+            <div class="item" id="letterU">U</div>
+            <div class="item" id="letterV">V</div>
+            <div class="item" id="letterW">W</div>
+            <div class="item" id="letterX">X</div>
+            <div class="item" id="letterY">Y</div>
+            <div class="item" id="letterZ">Z</div>
+        </div>
         
         <!-- Add a container to display the encoded text -->
         <div id="encodedTextContainer">
@@ -61,6 +89,21 @@
             // Encode the user's input with the specified shift value
             const encodedText = caesarCipher(userInput, currentShiftValue);
 
+
+            
+            // Get the first letter and convert to uppercase
+            for (const char of encodedText){
+                scrollToElement(char);
+                
+            }
+
+
+
+
+
+
+
+
             // Display the encoded text
             const encodedTextContainer = document.getElementById('encodedText');
             encodedTextContainer.textContent = 'Encoded Text: ' + encodedText;
@@ -68,6 +111,11 @@
             // Clear the input field
             inputField.value = '';
         }
+        function scrollToElement(letter) {
+            const Element = document.getElementById('letter'+letter.toUpperCase());
+            Element.scrollIntoView({ behavior: 'smooth' });
+        }
+        
 
         // Set up the form submission handler
         document.getElementById('myForm').addEventListener('submit', handleFormSubmission);
